@@ -1,5 +1,6 @@
 var http = require("http")
 var fs = require("fs")
+const { error } = require("console")
 
 var server = http.createServer((req, res) => {
 
@@ -15,7 +16,19 @@ var server = http.createServer((req, res) => {
             res.write(html)
             res.end()
         })
-    } else if (req.url == "/create") {
+    }
+    else if (req.url == "/create" && req.method == "POST") {
+        fs.appendFile("blogs.txt", "deneme", (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.statusCode = 302
+                res.setHeader("Location", "/")
+                res.end()
+            }
+        })
+    }
+    else if (req.url == "/create") {
         fs.readFile("create.html", (error, html) => {
             res.writeHead(200, { "Content-Type": "text/html" })
             res.write(html)
