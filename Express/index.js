@@ -3,6 +3,9 @@ const path = require("path")
 
 const app = express()
 
+app.use("/libs",express.static('node_modules'))
+app.use("/static",express.static('public'))
+
 app.use("/blogs/:blogid", function(req, res,){
     console.log(__dirname)
     console.log(__filename)
