@@ -1,17 +1,18 @@
 const express = require("express")
+const path = require("path")
 
 const app = express()
 
-app.use("/blogs/:blogid/users/:username", function(req, res,){
-    console.log(req.params.blogid)
-    console.log(req.params.username)
-    res.send("blog detay sayfası")
+app.use("/blogs/:blogid", function(req, res,){
+    console.log(__dirname)
+    console.log(__filename)
+    res.sendFile(path.join(__dirname, "views/users" ,"blog-details.html"))
 })
 app.use("/blogs", function(req, res,){
-    res.send("blog listesi")
+    res.sendFile(path.join(__dirname ,"views/users", "blogs.html"))
 })
 app.use("/", function(req, res,){
-    res.send("anasayfa")
+    res.sendFile(path.join(__dirname, "views/users", "index.html"))
 })
 app.listen(3000, function(){
     console.log("listening on port 3000")
