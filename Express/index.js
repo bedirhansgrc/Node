@@ -2,20 +2,17 @@ const express = require("express")
 
 const app = express()
 
-app.use(function(req, res,next){
-    console.log("middleware 1")
-    next()
+app.use("/blogs/:blogid/users/:username", function(req, res,){
+    console.log(req.params.blogid)
+    console.log(req.params.username)
+    res.send("blog detay sayfası")
 })
-app.use(function(req, res,next){
-    console.log("middleware 2")
-    next()
+app.use("/blogs", function(req, res,){
+    res.send("blog listesi")
 })
-app.use(function(req, res){
-    console.log("middleware 3")
-    res.send("<h1>Homepage</h1>")
-    res.end()
+app.use("/", function(req, res,){
+    res.send("anasayfa")
 })
-
 app.listen(3000, function(){
     console.log("listening on port 3000")
 })
