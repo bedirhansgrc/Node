@@ -1,23 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css" />
-    <title><%=title %> - Blogapp</title>
-  </head>
+  <%- include('../partials/head') %>
   <body>
-    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
-      <div class="container">
-        <a href="/" class="navbar-brand">Blogapp</a>
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a href="/blogs" class="nav-link">Blog Listesi</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+    <%- include('../partials/nav') %>
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-3">
@@ -58,28 +43,8 @@
                 </div>
             <% } %>
           <% }) %>
-          <% if (blogs.filter(b => b.onay).length > 3) { %>
-            <!-- Pagination -->
-            <nav>
-              <ul class="pagination justify-content-center">
-                <li class="page-item">
-                  <a href="" class="page-link">Geri</a>
-                </li>
-                <li class="page-item">
-                  <a href="" class="page-link active">1</a>
-                </li>
-                <li class="page-item">
-                  <a href="" class="page-link">2</a>
-                </li>
-                <li class="page-item">
-                  <a href="" class="page-link">3</a>
-                </li>
-                <li class="page-item">
-                  <a href="" class="page-link">İleri</a>
-                </li>
-              </ul>
-            </nav>
-           
+          <% if (blogs.filter(b => b.onay).length > 2) { %>
+                <%- include('../partials/pagination') %>
           <% } %>
         </div>
       </div>
