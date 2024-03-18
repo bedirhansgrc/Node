@@ -1,118 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css" />
+    <title><%=title %> - Blogapp</title>
+  </head>
+  <body>
     <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
-        <div class="container">
-            <a href="/" class="navbar-brand">Blogapp</a>
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a href="/blogs" class="nav-link">Blog Listesi</a>
-                </li>
-            </ul>
-        </div>
+      <div class="container">
+        <a href="/" class="navbar-brand">Blogapp</a>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a href="/blogs" class="nav-link">Blog Listesi</a>
+          </li>
+        </ul>
+      </div>
     </nav>
-    <!-- navigation -->
+
     <div class="container mt-3">
-        <div class="row">
-            <!-- menu -->
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="" class="list-group-item list-group-item-action active">Web Geliştirme</a>
-                    <a href="" class="list-group-item list-group-item-action">Mobil Uygulamalar</a>
-                    <a href="" class="list-group-item list-group-item-action">Veri Analizi</a>
-                    <a href="" class="list-group-item list-group-item-action">Programlama</a>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <h1 class="h3 mb-3">Blog Listesi</h1>
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="/static/images/1.jpeg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    Komple Uygulamalı Web Geliştirme
-                                </h5>
-                                <p class="card-text">Web Geliştirme</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="/static/images/2.jpeg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    Phyton Programlama
-                                </h5>
-                                <p class="card-text">Phyton Geliştirme</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="/static/images/3.jpeg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    Javascript Programlama
-                                </h5>
-                                <p class="card-text">JS Geliştirme</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="/static/images/4.jpeg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    React Programlama
-                                </h5>
-                                <p class="card-text">React Geliştirme</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <!-- Pagination -->
-            <nav>
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a href="" class="page-link">Geri</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="" class="page-link active">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="" class="page-link">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="" class="page-link">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="" class="page-link">İleri</a>
-                    </li>
-                </ul>
-            </nav>
-            </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="list-group">
+            <!-- <% for( let index = 0; index < categories.length; index++ ) { %>
+                        <a href="" class="list-group-item list-group-item-action"> <%= categories[index] %></a>
+                    <% } %> -->
+
+            <% categories.forEach(function(category){ %>
+            <a href="" class="list-group-item list-group-item-action">
+              <%= category %></a
+            >
+            <% }) %>
+          </div>
         </div>
+        <div class="col-md-9">
+          <h1 class="h3 mb-3"><%=title %></h1>
+
+          <% blogs.forEach(blog => { %>
+          <div class="card mb-3">
+            <div class="row">
+              <div class="col-md-4">
+                <img
+                  src="/static/images/<%= blog.resim %>"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><%= blog.baslik %></h5>
+                  <p class="card-text"><%= blog.aciklama %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+          <!-- Pagination -->
+          <nav>
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a href="" class="page-link">Geri</a>
+              </li>
+              <li class="page-item">
+                <a href="" class="page-link active">1</a>
+              </li>
+              <li class="page-item">
+                <a href="" class="page-link">2</a>
+              </li>
+              <li class="page-item">
+                <a href="" class="page-link">3</a>
+              </li>
+              <li class="page-item">
+                <a href="" class="page-link">İleri</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
