@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <title><%=title %> - Blogapp</title>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
@@ -22,14 +22,15 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="" class="list-group-item list-group-item-action active">Web Geliştirme</a>
-                    <a href="" class="list-group-item list-group-item-action">Mobil Uygulamalar</a>
-                    <a href="" class="list-group-item list-group-item-action">Veri Analizi</a>
-                    <a href="" class="list-group-item list-group-item-action">Programlama</a>
+                    <% for( let index = 0; index < categories.length; index++ ) { %>
+                        <a href="" class="list-group-item list-group-item-action"> <%= categories[index] %></a>
+                    <% } %>
                 </div>
             </div>
             <div class="col-md-9">
-                <h1 class="h3 mb-3">Anasayfa</h1>
+                <h1 class="h3 mb-3">
+                    <%=title %>
+                </h1>
                 <div class="card mb-3">
                     <div class="row">
                         <div class="col-md-4">
