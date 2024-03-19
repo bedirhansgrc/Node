@@ -8,10 +8,11 @@ router.use("/blogs/category/:categoryid", async function(req,res){
     try{
         const [blogs,] = await db.execute("select * from blog where categoryid =?", [id])
         const [categories,] = await db.execute("select * from category")
-        res.render("users/index", {
+        res.render("users/blogs", {
             title: "Popüler Kurslar",
             blogs: blogs,
-            categories: categories
+            categories: categories,
+            selectedCategory: id
         })
     }
     catch (err) {
@@ -46,7 +47,8 @@ router.use("/blogs", async function (req, res,) {
         res.render("users/blogs", {
             title: "Tüm Kurslar",
             blogs: blogs,
-            categories: categories
+            categories: categories,
+            selectedCategory: null
         })
     }
 
@@ -61,7 +63,8 @@ router.use("/", async function (req, res,) {
         res.render("users/index", {
             title: "Popüler Kurslar",
             blogs: blogs,
-            categories: categories
+            categories: categories,
+            selectedCategory: null
         })
     }
 
