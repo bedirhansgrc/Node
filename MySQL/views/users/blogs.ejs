@@ -13,6 +13,10 @@
         <div class="col-md-9">
           <h1 class="h3 mb-3"><%=title %></h1>
 
+          <% if (blogs.length == 0) { %>
+            <%- include('../partials/noproducts') %>
+          <% } %>
+
           <% blogs.forEach(blog => { %>
            
              
