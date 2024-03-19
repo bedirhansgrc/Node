@@ -14,10 +14,9 @@
           <h1 class="h3 mb-3"><%=title %></h1>
 
           <% blogs.forEach(blog => { %>
-            <% if (blog.onay==true) { %>
+           
              
               <%- include('../partials/blog-card', blog) %>
-            <% } %>
           <% }) %>
           <% if (blogs.filter(b => b.onay).length > 2) { %>
                 <%- include('../partials/pagination') %>

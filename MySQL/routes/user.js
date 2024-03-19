@@ -46,9 +46,9 @@ router.use("/blogs/:blogid", function(req, res,){
     res.render("users/blog-details")
 })
 router.use("/blogs", function(req, res,){
-    db.execute("select * from blog")
+    db.execute("select * from blog where onay=1")
         .then(result => {
-            res.render("users/index", {
+            res.render("users/blogs", {
                 title: "Tüm Kurslar",
                 blogs: result[0],
                 categories: data.categories
@@ -59,7 +59,7 @@ router.use("/blogs", function(req, res,){
         })
 })
 router.use("/", function(req, res,){
-    db.execute("select * from blog")
+    db.execute("select * from blog where onay=1 and anasayfa=1")
         .then(result => {
             res.render("users/index", {
                 title: "Popüler Kurslar",
