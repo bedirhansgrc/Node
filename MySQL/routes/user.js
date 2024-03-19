@@ -6,12 +6,14 @@ const db = require("../data/db")
 router.use("/blogs/:blogid", async function (req, res,) {
     const id = req.params.blogid
     try {
-        const [blog,] = await db.execute("select * from blog where blogid =?", [id])
+        const [blogs,] = await db.execute("select * from blog where blogid =?", [id])
 
-        if(blog[0]){
+        const blog = blogs[0]
+
+        if(blog){
             return res.render("users/blog-details", {
-                title: blog[0].baslik,
-                blog: blog[0]
+                title: blog.baslik,
+                blog: blog
             })
         }
         res.redirect("/")
