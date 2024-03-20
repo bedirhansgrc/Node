@@ -29,7 +29,10 @@
                     <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
                     <div class="col-sm-8">
                         <select name="kategori" id="kategori" class="form-select">
-                            <option value="" selected>Seçiniz</option>
+                            <option value="-1" selected>Seçiniz</option>
+                            <% categories.forEach(category => { %>
+                                <option value="<%= category.categoryid %>"><%= category.name %></option>
+                            <% }) %>
                         </select>
                     </div>
                 </div>
