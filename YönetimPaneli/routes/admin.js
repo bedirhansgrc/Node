@@ -2,7 +2,9 @@ const express = require("express")
 const router = express.Router()
 
 router.use("/admin/blog/create", function(req, res,){
-    res.render("admin/blog-create")
+    res.render("admin/blog-create", {
+        title: "add blog"
+    })
 })
 router.use("/admin/blogs/:blogid", function(req, res,){
     res.render("admin/blog-edit")
